@@ -1,9 +1,5 @@
 import { useEffect, useState } from "react";
-
-import HomeIcon from "@material-ui/icons/Home";
-import ProjectsIcon from "@material-ui/icons/Reorder";
-import Skills from "@material-ui/icons/BorderColor";
-import ContactIcon from "@material-ui/icons/Send";
+import { Link } from "react-scroll";
 
 import { Container, Menu } from "./styles";
 
@@ -14,58 +10,6 @@ type SectionList = {
 }[];
 
 export default function Header() {
-  const [isNavVisibility, setNavVisibility] = useState(false);
-
-  const sectionList: SectionList = [
-    {
-      name: "Início",
-      id: "s-welcome",
-      icon: <HomeIcon />,
-    },
-    {
-      name: "Projetos",
-      id: "s-projects",
-      icon: <ProjectsIcon />,
-    },
-    {
-      name: "Habilidades",
-      id: "s-skills",
-      icon: <Skills />,
-    },
-    {
-      name: "Entre em contato",
-      id: "s-contact-me",
-      icon: <ContactIcon />,
-    },
-  ];
-
-  function scrollTo(id?: string) {
-    if (!id) {
-      return;
-    }
-
-    let el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({
-        behavior: "smooth",
-      });
-    } else {
-      console.error("Seção não existe.");
-    }
-  }
-
-  useEffect(() => {
-    const scrollListener = () => {
-      window.scrollY > 70 ? setNavVisibility(true) : setNavVisibility(false);
-    };
-
-    window.addEventListener("scroll", scrollListener);
-
-    return () => {
-      window.removeEventListener("scroll", scrollListener);
-    };
-  }, []);
-
   return (
     <Container>
       <Menu>
@@ -75,16 +19,24 @@ export default function Header() {
 
         <ul>
           <li>
-            <a href="#home">Home</a>
+            <Link activeClass="active" smooth spy to="home">
+              Home
+            </Link>
           </li>
           <li>
-            <a href="#projects">Projects</a>
+            <Link activeClass="active" smooth spy to="skillForm">
+              Skills
+            </Link>
           </li>
           <li>
-            <a href="#skills">Skills</a>
+            <Link activeClass="active" smooth spy to="projectsCards">
+              Projects
+            </Link>
           </li>
           <li>
-            <a href="#contact">Contact</a>
+            <Link activeClass="active" smooth spy to="contact">
+              Contact
+            </Link>
           </li>
         </ul>
       </Menu>

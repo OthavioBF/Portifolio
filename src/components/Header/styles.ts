@@ -35,13 +35,25 @@ export const Menu = styled.div`
         text-decoration: none;
         font-family: Roboto, Arial, sans-serif;
         font-size: 20px;
-        color: var(--gray-medium);
+        color: var(--gray-dark);
       }
 
       &:hover {
         cursor: pointer;
         background-color: #26bdff;
-        transition: all ease-in-out 0.5s;
+        transition: all ease-in-out 0.3s;
+      }
+    }
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    padding: 10px;
+
+    ul {
+      li {
+        a {
+        font-size: 18px;
       }
     }
   }

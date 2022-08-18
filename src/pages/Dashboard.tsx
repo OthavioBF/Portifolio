@@ -1,8 +1,11 @@
 import React from "react";
 import Lottie from "react-lottie";
+import { Link } from "react-scroll";
 
 import Header from "../components/Header";
 import SkillForm from "../components/SkillForm";
+import ProjectsCards from "../components/ProjectsCards";
+import Contact from "../components/Contact";
 import code from "../assets/Gif/97639-coding.json";
 import Me from "../assets/Images/Me.png";
 
@@ -16,8 +19,6 @@ import {
   AboutContent,
   Text,
   Div,
-  Skills,
-  Contact,
 } from "./styles";
 
 export function Dashboard() {
@@ -44,7 +45,9 @@ export function Dashboard() {
               <h3>Front-End Developer</h3>
             </div>
 
-            <a href="">Contact Me</a>
+            <Link activeClass="active" smooth spy to="contact">
+              Contact Me
+            </Link>
           </TextPresentation>
           <ImageContainer>
             <img src={Me} />
@@ -72,9 +75,17 @@ export function Dashboard() {
         </AboutContent>
       </About>
 
-      <SkillForm />
+      <section id="skillForm">
+        <SkillForm />
+      </section>
 
-      <Contact id="contact"></Contact>
+      <section id="projectsCards">
+        <ProjectsCards />
+      </section>
+
+      <section id="contact">
+        <Contact />
+      </section>
     </Container>
   );
 }
